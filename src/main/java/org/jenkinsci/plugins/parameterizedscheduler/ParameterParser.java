@@ -3,7 +3,6 @@ package org.jenkinsci.plugins.parameterizedscheduler;
 import com.google.common.base.Splitter;
 import edu.umd.cs.findbugs.annotations.CheckForNull;
 import hudson.model.ParametersDefinitionProperty;
-import org.apache.commons.lang.StringUtils;
 
 import java.util.Collections;
 import java.util.List;
@@ -24,7 +23,7 @@ public class ParameterParser {
 	 * @return Map of key-value pairs parsed from provided string
 	 */
 	public Map<String, String> parse(String nameValuePairFormattedString) {
-		if (StringUtils.isBlank(nameValuePairFormattedString)) {
+		if (nameValuePairFormattedString == null || nameValuePairFormattedString.isBlank()) {
 			return Collections.emptyMap();
 		}
 		String clean = nameValuePairFormattedString.trim();
